@@ -1,0 +1,9 @@
+int
+float
+double
+char
+if
+else
+return
+difg\
+ug

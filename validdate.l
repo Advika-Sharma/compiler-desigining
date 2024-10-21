@@ -1,13 +1,21 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+%}
+
 %%
-([0-9][0-9])-([0-9][0-9])-([1-2][0-9][0-9][0-9]) {printf("valid date");}
-.+ {printf("not valid date");}
+([0-2][0-9]|3[01])\/(0[1-9]|1[0-2])\/([0-9]{4}) { printf("Valid date: %s\n", yytext); }
+[ \t\n]+                 { /* Ignore whitespace */ }
+.                        { printf("Invalid input: %s\n", yytext); }
+
 %%
-int main()
-{printf("\n enter date:");
-yylex();
-printf("\n");
-return 0;
+
+int main(int argc, char **argv) {
+printf("Enter date:");
+    yylex();
+    return 0;
 }
-int yywrap()
-{
+
+int yywrap() {
+    return 1;
 }
